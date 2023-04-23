@@ -182,7 +182,7 @@ if __name__ == "__main__":
         "--rnn",
         type=str,
         default="transformer",
-        choices=["lstm", "transformer", "ffn","bert"],
+        choices=["lstm", "transformer", "ffn"],
         help="Type of RNN cell.",
     )
     parser.add_argument(
