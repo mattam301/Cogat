@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from .Transfomer import SeqTransfomer, FC_with_PE, LSTM_Layer
+from .Transfomer import SeqTransfomer, FC_with_PE, LSTM_Layer, Bert_layer
 class SeqEncoder(nn.Module):
     def __init__(self, a_dim, t_dim, v_dim, h_dim, args):
         super(SeqEncoder, self).__init__()
@@ -31,8 +31,8 @@ class SeqEncoder(nn.Module):
                                            nn.ReLU())
         elif (self.rnn == "lstm"):
             self.text_encoder = LSTM_Layer(self.t_dim, self.hidden_dim, args)
-        # elif (self.rnn == "bert"):
-        #     return
+        elif (self.rnn == "bert"):
+            self.text_encoder = Bert_layer(self.t_dim, self.hidden_dim, args)
             
             
 

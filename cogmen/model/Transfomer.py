@@ -75,8 +75,19 @@ class LSTM_Layer(nn.Module):
 
         return out
 
-# class Bert_layer
+class Bert_layer(torch.nn.Module):
+    def __init__(self, t_dim, hidden_dim, args):
+        super(Bert_layer, self).__init__()
+        self.t_dim = t_dim
+        self.hidden_dim = hidden_dim
+        self.args = args
+        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        self.text_encoder = BertModel.from_pretrained('bert-base-uncased')
 
+    def forward(self, input_text):
+        encoded_input = self.tokenizer(input_text, padding=True, truncation=True, return_tensors='pt')
+        outputs = self.text_encoder(encoded_input['input_ids'], attention_mask=encoded_input['attention_mask'])
+        return outputs.last_hidden_state
 
 class PositionalEncoder(nn.Module):
 
