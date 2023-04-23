@@ -3,7 +3,7 @@ import torch.nn as nn
 import math
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 
-
+from transformers import BertTokenizer, BertModel
 class SeqTransfomer(nn.Module):
     def __init__(self, input_size,h_dim, args):
         super(SeqTransfomer, self).__init__()
@@ -74,6 +74,8 @@ class LSTM_Layer(nn.Module):
         out, _ = pad_packed_sequence(packed_out, batch_first=True)
 
         return out
+
+# class Bert_layer
 
 
 class PositionalEncoder(nn.Module):

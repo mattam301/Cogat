@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 
 from .Transfomer import SeqTransfomer, FC_with_PE, LSTM_Layer
-
 class SeqEncoder(nn.Module):
     def __init__(self, a_dim, t_dim, v_dim, h_dim, args):
         super(SeqEncoder, self).__init__()
@@ -16,11 +15,13 @@ class SeqEncoder(nn.Module):
 
         print(a_dim, t_dim, v_dim)
 
+        ## Audio Encoding
         self.audio_encoder = nn.Sequential(nn.Linear(self.a_dim, self.hidden_dim),
                                            nn.ReLU(),
                                            nn.Linear(self.hidden_dim, self.hidden_dim),
                                            nn.ReLU())
 
+        # Text Encoding
         if (self.rnn == "transformer"):
             self.text_encoder = SeqTransfomer(self.t_dim, self.hidden_dim, args)
         elif (self.rnn == "ffn"):
@@ -30,7 +31,12 @@ class SeqEncoder(nn.Module):
                                            nn.ReLU())
         elif (self.rnn == "lstm"):
             self.text_encoder = LSTM_Layer(self.t_dim, self.hidden_dim, args)
+        # elif (self.rnn == "bert"):
+        #     return
+            
+            
 
+        # Visual Encoding
         self.vision_encoder = nn.Sequential(nn.Linear(self.v_dim, self.hidden_dim),
                                            nn.ReLU(),
                                            nn.Linear(self.hidden_dim, self.hidden_dim),
