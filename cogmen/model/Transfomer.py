@@ -10,7 +10,7 @@ class SeqTransfomer(nn.Module):
 
         self.input_size = input_size
 
-        self.nhead = 1
+        self.nhead = 2
         for h in range(7, 15):
             if self.input_size % h == 0:
                 self.nhead = h
