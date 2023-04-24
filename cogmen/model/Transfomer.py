@@ -4,6 +4,7 @@ import math
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 
 
+
 class SeqTransfomer(nn.Module):
     def __init__(self, input_size,h_dim, args):
         super(SeqTransfomer, self).__init__()
