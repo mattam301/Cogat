@@ -76,7 +76,6 @@ class LSTM_Layer(nn.Module):
 
         return out
 
-<<<<<<< HEAD
 class Bert_layer(torch.nn.Module):
     def __init__(self, t_dim, hidden_dim, args):
         super(Bert_layer, self).__init__()
@@ -90,9 +89,6 @@ class Bert_layer(torch.nn.Module):
         encoded_input = self.tokenizer(input_text, padding=True, truncation=True, return_tensors='pt')
         outputs = self.text_encoder(encoded_input['input_ids'], attention_mask=encoded_input['attention_mask'])
         return outputs.last_hidden_state
-=======
->>>>>>> parent of 3083208 (test import BERT)
-
 class PositionalEncoder(nn.Module):
 
     def __init__(self, d_model, dropout=0.1, max_len=5000):
