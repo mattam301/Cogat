@@ -57,6 +57,7 @@ class Net(nn.Module):
             for j in range(self.n_modals):
                 for k in range(self.n_modals):
                     if (j != k): edge_type_to_idx['0' + str(j) + str(k)] = len(edge_type_to_idx)
+        print("test_edgetype_to_indx")
         print(edge_type_to_idx)
                 
         self.edge_type_to_idx = edge_type_to_idx
