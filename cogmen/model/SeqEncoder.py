@@ -13,7 +13,7 @@ class SeqEncoder(nn.Module):
         self.t_dim = t_dim
         self.v_dim = v_dim
 
-        print("modalities's dim: " + a_dim, t_dim, v_dim)
+        print(a_dim, t_dim, v_dim)
 
         ## Audio Encoding
         self.audio_encoder = nn.Sequential(nn.Linear(self.a_dim, self.hidden_dim),
