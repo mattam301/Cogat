@@ -1,11 +1,12 @@
 from sentence_transformers import SentenceTransformer
 
 from transformers import AutoTokenizer, AutoModel
+from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
 
-tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/paraphrase-distilroberta-base-v1")
-sbert_model = AutoModel.from_pretrained("sentence-transformers/paraphrase-distilroberta-base-v1")
+tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
+sbert_model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased")
 
-#sbert_model = SentenceTransformer("paraphrase-distilroberta-base-v1")
+#sbert_model = SentenceTransformer("paraphrase-distilroberta-base-v2")
 
 
 class Sample:
