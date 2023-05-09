@@ -5,7 +5,8 @@ import torch
 import os
 import cogmen
 
-os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+
+#os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 log = cogmen.utils.get_logger()
 
 
@@ -42,7 +43,6 @@ def func(experiment, trainset, devset, testset, model, opt, sched, args):
 
 def main(args):
     
-    ## set seed for all
     cogmen.utils.set_seed(args.seed)
 
     if args.emotion:
